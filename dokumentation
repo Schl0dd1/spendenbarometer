@@ -1,0 +1,20 @@
+
+
+Offene Fragen: wo muss sich das django-project befinden? Momentan befindet es sich im Frontend-Ordner
+
+Dokumentation: 
+Es wurden 2 model (Konto und Buchung) angelegt. Jede Buchung ist mit dem Key eines Kontos verknüpft.
+Model 'Konto' beinhaltet Name, Inhaber*in, aktueller Kontostand, erstellungsdatum
+Model 'Buchung' beinhaltet Konto(Foreign key), beschreibung, betrag, ausgabe/einnahme(BooleanField False=ausgabe, True=einnahme)
+
+ToDos:
+- customize admin page to german (buchungen statt buchungs)
+- braucht es 2 Booleanfields oder reicht eins?
+- wie kommunizieren die buchungen mit Kontostand?
+
+def detail(request,konto_id):
+    form = NeuerEintrag
+    konto = get_object_or_404(Konto, pk=konto_id)
+    context = {'konto': konto, 'form':form}
+    return render(request, 'taschengeldapp/detail.html', context)
+

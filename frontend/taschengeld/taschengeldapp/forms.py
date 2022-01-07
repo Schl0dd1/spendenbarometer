@@ -1,0 +1,10 @@
+from django import forms
+from django.forms import ModelForm
+from .models import Konto, Buchung
+
+#Create a form
+
+class NeuerEintrag(ModelForm):
+    class Meta: 
+        model = Buchung
+        fields = ('__all__')

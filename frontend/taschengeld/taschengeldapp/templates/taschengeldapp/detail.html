@@ -1,0 +1,8 @@
+<h1>{{ konto.konto_name }}</h1>
+<a href="neuer_eintrag/">neuer Eintrag</a>
+
+<ul>
+	{% for buchung in konto.buchung_set.all %}
+	<li>{{ buchung.beschreibung }}: {{ buchung.betrag }} €</li>
+	{% endfor %}
+</ul>
