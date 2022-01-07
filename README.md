@@ -14,4 +14,5 @@
 - customize admin page
 - projektstruktur korrekturen(wo liegt welche datei richtig)
 - weniger views, benutzerfreundlichkeit
+- konto anlegen/löschen
 
