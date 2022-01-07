@@ -9,7 +9,8 @@
 
 ## nächste Schritte:
 - delete-button hinzufügen
-- - form überarbeiten (felder wie datum / konto automatisch füllen)
+- form überarbeiten (felder wie datum / konto automatisch füllen)
+- fix einnahme-checkbox ->switch-between einnahme ausgabe
 - customize admin page
 - projektstruktur korrekturen(wo liegt welche datei richtig)
 - weniger views, benutzerfreundlichkeit
