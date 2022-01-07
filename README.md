@@ -8,7 +8,9 @@
 <br />das Formular bekommt die daten aus dem Model übergeben und speichert die einträge in der datenbank (am ende sollen aber nicht alle felder ausgefüllt werden müssen)
 
 ## nächste Schritte:
+- delete-button hinzufügen
+- - form überarbeiten (felder wie datum / konto automatisch füllen)
 - customize admin page
-- form überarbeiten (felder wie datum / konto automatisch füllen)
 - projektstruktur korrekturen(wo liegt welche datei richtig)
 - weniger views, benutzerfreundlichkeit
+
