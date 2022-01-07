@@ -8,6 +8,7 @@
 <br />das Formular bekommt die daten aus dem Model übergeben und speichert die einträge in der datenbank (am ende sollen aber nicht alle felder ausgefüllt werden müssen)
 
 ## nächste Schritte:
+- kontostand anpassen
 - delete-button hinzufügen
 - form überarbeiten (felder wie datum / konto automatisch füllen)
 - fix einnahme-checkbox ->switch-between einnahme ausgabe
