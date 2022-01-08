@@ -1,11 +1,20 @@
-{% if alle_konten %}
+<div>
+	{% if alle_konten %}
+	<ul>
+		{% for konto in alle_konten %}
+		<a href="{{ konto.id }}/"><h1>{{ konto.konto_name }}</h1> </a>
 
-<ul>
-	{% for konto in alle_konten %}
-	<a href="{{ konto.id }}/"><h1>{{ konto.konto_name }}</h1></a>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<p>Keine Konten vorhanden.</p>
+	{% endif %}
+</div>
 
-	{% endfor %}
-</ul>
-{% else %}
-<p>Keine Konten vorhanden.</p>
-{% endif %}
+<div>
+	<h2>Neues Konto anlegen</h2>
+	<form action="" method="post">
+		{% csrf_token %} {{ form.as_p }}
+		<input type="submit" value="Konto anlegen" />
+	</form>
+</div>
