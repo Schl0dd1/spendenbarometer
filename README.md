@@ -9,10 +9,9 @@
 
 ## nächste Schritte:
 - kontostand anpassen
-- delete-button hinzufügen
-- form überarbeiten (felder wie datum / konto automatisch füllen)
+- delete-button-> fix redirect
+- konto bei neuem eintrag automatisch auswählen
 - fix einnahme-checkbox ->switch-between einnahme ausgabe
-- customize admin page
 - projektstruktur korrekturen(wo liegt welche datei richtig)
 - weniger views, benutzerfreundlichkeit
 - konto anlegen/löschen
