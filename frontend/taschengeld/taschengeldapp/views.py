@@ -2,7 +2,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
-from .forms import NeuerEintrag
+from .forms import NeuerEintrag, NeuesKonto
+from django.urls import reverse
 
 
 
@@ -23,25 +24,27 @@ def detail(request,konto_id):
 #NEEDS FIXING:
 def delete_buchung(request, buchung_id):
     buchung = Buchung.objects.get(pk=buchung_id)
-    konto = buchung.objects.get(konto_id)
+    #konto = buchung.objects.get(konto) # wie spreche ich das konto an? konto-id mit übergeben? wie?
+    #konto.aktueller_kontostand -= buchung.betrag
+    #konto.save()
+    args = [konto.id]
+
     buchung.delete()
-    return redirect ('detail')
+    return HttpResponseRedirect(reverse('detail', args))
 
 def delete_konto(request, konto_id):
      konto = get_object_or_404(Konto, pk=konto_id)
      konto.delete()
-     return index(request)
+     return HttpResponseRedirect('/')
 
 #NEEDS FIXING
 def neues_konto(request):
     if request.method == "POST":
         form = NeuesKonto(request.POST)
         if form.is_valid():
-            konto_name = form.cleaned_data['name']
-            k = Konto(konto_name=konto_name)
-            k.save()
-
-            return HttpResponseRedirect('?submitted=True')
+            form.save()
+            #how to get id from new account?
+            return render(request, 'taschengeldapp/detail.html', {'form' : form})
     else:
         form = NeuesKonto
         if 'submitted' in request.GET:
@@ -61,8 +64,10 @@ def neuer_eintrag(request,konto_id):
         if form.is_valid():
             form.save()
             betrag = form.cleaned_data['betrag']
-            konto.betrag += int(betrag)
-            return HttpResponseRedirect('?submitted=True')
+            konto.aktueller_kontostand += int(betrag)
+            konto.save()
+            #empty form
+            return render(request, 'taschengeldapp/detail.html', {'konto' : konto})
     else:
         form = NeuerEintrag
         if 'submitted' in request.GET:

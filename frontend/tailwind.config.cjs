@@ -1,11 +1,4 @@
-const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
-
-	theme: {
-		extend: {}
-	},
-
-	plugins: []
+module.exports = {
+	mode: 'jit',
+	purge: ['./src/**/*.svelte']
 };
-
-module.exports = config;
