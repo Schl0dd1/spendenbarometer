@@ -1,5 +1,9 @@
 # taschengeldapp
-<br />Offene Fragen: wo muss sich das django-project befinden? Momentan befindet es sich im Frontend-Ordner
+<br />Offene Fragen: 
+- wo muss sich das django-project befinden? Momentan befindet es sich im Frontend-Ordner
+- kommunikation zwischen django-svelte
+- django view.py redirect/httpresponse/render
+- bilder in svelte werden nicht gefunden
 
 ## Dokumentation: 
 <br />Es wurden 2 model (Konto und Buchung) angelegt. Jede Buchung ist mit dem Key eines Kontos verknüpft.
