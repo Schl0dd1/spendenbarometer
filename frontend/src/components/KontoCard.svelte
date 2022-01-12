@@ -6,6 +6,8 @@
 	import { fade } from 'svelte/transition';
 
 	let style = 'uppercase text-2xl';
+	// für spätere datenbankspeicherung:
+	let einnahme = false;
 
 	let update = () => {
 		betrag = 0;
@@ -21,6 +23,8 @@
 	}
 
 	function handleClickEinnahme() {
+		einnahme = true;
+
 		if (betrag < 0) {
 			betrag = betrag * -1;
 		}
