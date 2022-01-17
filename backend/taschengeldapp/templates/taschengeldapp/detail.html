@@ -1,0 +1,13 @@
+<h1>{{ konto.konto_name }}</h1>
+<h2>Kontostand: {{ konto.aktueller_kontostand }}</h2>
+<a href="neuer_eintrag/">neuer Eintrag</a>
+
+<ul>
+	{% for buchung in konto.buchung_set.all %}
+	<li>
+		{{ buchung.beschreibung }}: {{ buchung.betrag }} €
+		<a href="{%url 'taschengeldapp:delete-buchung' buchung.id %}">Eintrag löschen</a>
+	</li>
+	{% endfor %}
+</ul>
+<a href="{%url 'taschengeldapp:delete-konto' konto.id %}">Konto löschen</a>

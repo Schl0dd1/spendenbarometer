@@ -9,10 +9,12 @@ python = "^3.8"
 django = "<4"
 django-environ = "*"
 django-moneyfield = "^0.2.1"
+restless = "^2.2.0"
 
 [tool.poetry.dev-dependencies]
 ipdb = "*"
 black = "*"
+django-extensions = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

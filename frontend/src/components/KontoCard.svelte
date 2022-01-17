@@ -1,39 +1,51 @@
 <script>
+	import Nav from '../components/nav.svelte';
+	export let konto_id;
 	export let kontoname;
 	export let kontostand;
 	export let src;
 	export let betrag;
+	export let alle_buchungen = [];
 	import { fade } from 'svelte/transition';
 
 	let style = 'uppercase text-2xl';
-	// für spätere datenbankspeicherung:
-	let einnahme = false;
+	let einnahme = false; // let einnahme für spätere datenbankspeicherung:
+	alle_buchungen = [];
 
 	let update = () => {
+		alle_buchungen.push(betrag);
 		betrag = 0;
 		style = kontostand < 0 ? 'uppercase text-2xl text-rose-600' : 'uppercase text-2xl';
 	};
 
 	function handleClickAusgabe() {
-		if (betrag < 0) {
-			betrag = betrag * -1;
+		if (isNaN(betrag)) {
+			alert('Gib eine Zahl ein!');
+		} else {
+			einnahme = false;
+			if (betrag < 0) {
+				betrag = betrag * -1;
+			}
+			kontostand -= betrag;
+			kontostand = Math.round(kontostand * 100) / 100;
+			update();
 		}
-		kontostand -= betrag;
-		update();
 	}
 
 	function handleClickEinnahme() {
-		einnahme = true;
+		if (isNaN(betrag)) {
+			alert('Gib eine Zahl ein!');
+		} else {
+			einnahme = true;
 
-		if (betrag < 0) {
-			betrag = betrag * -1;
+			if (betrag < 0) {
+				betrag = betrag * -1;
+			}
+			kontostand += betrag;
+			kontostand = Math.round(kontostand * 100) / 100;
+			update();
 		}
-		kontostand += betrag;
-		update();
 	}
-
-	const age = 20;
-	const age_group = age < 18 ? 'Child' : 'Adult';
 </script>
 
 <div
@@ -41,8 +53,9 @@
 	href={``}
 	transition:fade
 >
+	<Nav on:delete-konto konto={konto_id} />
 	<h1 class="uppercase text-2xl">{kontoname}</h1>
-	<img class="h-40" {src} alt="Foto" />
+	<img class="h-20 mb-4" {src} alt="Foto" />
 	<div class="mb-3 xl:w-96">
 		<label for="exampleNumber0" class="form-label inline-block mb-2 text-gray-700"
 			>Gib einen Betrag in € ein:</label
