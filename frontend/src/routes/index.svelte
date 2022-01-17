@@ -1,5 +1,6 @@
 <script>
 	import KontoCard from '../components/KontoCard.svelte';
+	import CreateNewAccount from '../components/createNewAccount.svelte';
 
 	//durch daten aus datenbank ersetzen:
 	let konten = [
@@ -25,8 +26,17 @@
 
 	const deleteKonto = (e) => {
 		let konto_id = e.detail;
-		console.log(e);
-		// konten = konten.filter((konto) => konto.id != konto_id);
+		let text = 'Willst du dieses Konto unwiderruflich löschen?';
+		if (confirm(text) == true) {
+			konten = konten.filter((konto) => konto.id != konto_id);
+		}
+	};
+
+	const createKonto = (e) => {
+		let neuesKonto = e.detail;
+		neuesKonto.id = konten.length + 1;
+		konten = [e.detail, ...konten];
+		console.log(konten);
 	};
 </script>
 
@@ -40,7 +50,10 @@
 			kontostand={konto.kontostand}
 			src={konto.src_img}
 			alle_buchungen={konto.alle_buchungen}
+			{konto}
 			on:delete-konto={deleteKonto}
 		/>
 	{/each}
 </div>
+
+<CreateNewAccount on:create-konto={createKonto} />

@@ -1,12 +1,18 @@
 <script>
 	import Nav from '../components/nav.svelte';
-	export let konto_id;
+	export let konto;
 	export let kontoname;
 	export let kontostand;
 	export let src;
 	export let betrag;
 	export let alle_buchungen = [];
 	import { fade } from 'svelte/transition';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+	const handleDelete = (kontoId) => {
+		dispatch('delete-konto', kontoId);
+	};
 
 	let style = 'uppercase text-2xl';
 	let einnahme = false; // let einnahme für spätere datenbankspeicherung:
@@ -53,7 +59,18 @@
 	href={``}
 	transition:fade
 >
-	<Nav on:delete-konto konto={konto_id} />
+	<nav class="flex justify-end w-full mx-8 my-4">
+		<button class="mx-1 text-lg w-6 hover:shadow-md">
+			<img src="/icons/pencil.svg" alt="" /></button
+		>
+		<button class="mx-3 text-lg w-6 hover:shadow-md">
+			<img src="/icons/list-numbered.svg" alt="uebersicht aus- und einnahmen" /></button
+		>
+		<button class="mx-1 text-lg w-6 hover:shadow-md" on:click={() => handleDelete(konto.id)}>
+			<img src="/icons/bin.svg" alt="" /></button
+		>
+	</nav>
+
 	<h1 class="uppercase text-2xl">{kontoname}</h1>
 	<img class="h-20 mb-4" {src} alt="Foto" />
 	<div class="mb-3 xl:w-96">
