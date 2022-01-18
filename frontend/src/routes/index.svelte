@@ -1,6 +1,9 @@
 <script>
+	import SmallCard from '../components/smallCard.svelte';
 	import KontoCard from '../components/KontoCard.svelte';
 	import CreateNewAccount from '../components/createNewAccount.svelte';
+	import Kontoname from './[kontoname].svelte';
+
 	//import { konten } from '../stores/data_store';
 
 	//fetch data from data_store:
@@ -17,14 +20,16 @@
 				{ id: 1, betrag: 20, beschreibung: 'Taschengeld', date: '' },
 				{ id: 2, betrag: -1.2, beschreibung: 'Kaugummis', date: '' },
 				{ id: 3, betrag: -5.0, beschreibung: 'Kino', date: '' }
-			]
+			],
+			show: false
 		},
 		{
 			id: 2,
 			kontoname: 'Nanni',
 			kontostand: 30,
 			src_img: '/img/the-cat.webp',
-			alle_buchungen: []
+			alle_buchungen: [],
+			show: false
 		}
 	];
 
@@ -43,8 +48,13 @@
 		console.log(konten);
 	};
 
-	const createBuchung = (e) => {
-		console.log(e.detail);
+	// const createBuchung = (e) => {
+	// 	console.log(e.detail);
+	// };
+	let show = false;
+	const showCard = () => {
+		show = show ? false : true;
+		console.log(show);
 	};
 </script>
 
@@ -53,14 +63,23 @@
 
 <div class="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
 	{#each konten as konto (konto.id)}
-		<KontoCard
-			kontoname={konto.kontoname}
-			kontostand={konto.kontostand}
-			src={konto.src_img}
-			alle_buchungen={konto.alle_buchungen}
-			{konto}
-			on:delete-konto={deleteKonto}
-		/>
+		{#if show === false}
+			<SmallCard
+				kontoname={konto.kontoname}
+				kontostand={konto.kontostand}
+				{konto}
+				on:toggle={showCard}
+			/>
+		{:else}
+			<KontoCard
+				kontoname={konto.kontoname}
+				kontostand={konto.kontostand}
+				src={konto.src_img}
+				alle_buchungen={konto.alle_buchungen}
+				{konto}
+				on:delete-konto={deleteKonto}
+			/>
+		{/if}
 	{/each}
 </div>
 

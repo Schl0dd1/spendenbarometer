@@ -132,3 +132,6 @@
 		<h2 class={style}>{kontostand} €</h2>
 	</form>
 </div>
+
+<style>
+</style>
