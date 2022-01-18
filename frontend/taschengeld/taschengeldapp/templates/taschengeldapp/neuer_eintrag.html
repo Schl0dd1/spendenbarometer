@@ -1,9 +1,0 @@
-<h1>Neuer Eintrag</h1>
-{% if submitted %}
-<p>Dein Eintrag wurde gespeichert</p>
-{% endif %}
-
-<form action="" method="post">
-	{% csrf_token %} {{ form.as_p }}
-	<input type="submit" value="Submit" />
-</form>

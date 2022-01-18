@@ -19,10 +19,13 @@
 			const newKonto = {
 				id: uuidv4(), //wird überschrieben
 				kontoname: text,
-				kontostand: 0
+				kontostand: 0,
+				src_img: '',
+				alle_buchungen: []
 			};
 			dispatch('create-konto', newKonto);
 		}
+		text = null;
 	};
 </script>
 
@@ -65,3 +68,6 @@
 		<div class="message">{message}</div>
 	{/if}
 </form>
+
+<style>
+</style>

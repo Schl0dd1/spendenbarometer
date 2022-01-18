@@ -8,6 +8,7 @@
 	export let alle_buchungen = [];
 	import { fade } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
+	import { v4 as uuidv4 } from 'uuid';
 
 	const dispatch = createEventDispatcher();
 	const handleDelete = (kontoId) => {
@@ -16,10 +17,16 @@
 
 	let style = 'uppercase text-2xl';
 	let einnahme = false; // let einnahme für spätere datenbankspeicherung:
-	alle_buchungen = [];
 
-	let update = () => {
-		alle_buchungen.push(betrag);
+	let handleUpdate = (e) => {
+		const neuerEintrag = {
+			id: uuidv4(), //wird überschrieben
+			betrag: betrag,
+			kontostand: 0,
+			beschreibung: '',
+			date: Date.now()
+		};
+		alle_buchungen = [neuerEintrag, ...alle_buchungen];
 		betrag = 0;
 		style = kontostand < 0 ? 'uppercase text-2xl text-rose-600' : 'uppercase text-2xl';
 	};
@@ -34,7 +41,6 @@
 			}
 			kontostand -= betrag;
 			kontostand = Math.round(kontostand * 100) / 100;
-			update();
 		}
 	}
 
@@ -49,7 +55,6 @@
 			}
 			kontostand += betrag;
 			kontostand = Math.round(kontostand * 100) / 100;
-			update();
 		}
 	}
 </script>
@@ -61,25 +66,31 @@
 >
 	<nav class="flex justify-end w-full mx-8 my-4">
 		<button class="mx-1 text-lg w-6 hover:shadow-md">
-			<img src="/icons/pencil.svg" alt="" /></button
+			<img class="opacity-50" src="/icons/pencil.svg" alt="" /></button
 		>
 		<button class="mx-3 text-lg w-6 hover:shadow-md">
-			<img src="/icons/list-numbered.svg" alt="uebersicht aus- und einnahmen" /></button
+			<img
+				class="opacity-50"
+				src="/icons/list-numbered.svg"
+				alt="uebersicht aus- und einnahmen"
+			/></button
 		>
 		<button class="mx-1 text-lg w-6 hover:shadow-md" on:click={() => handleDelete(konto.id)}>
-			<img src="/icons/bin.svg" alt="" /></button
+			<img class="opacity-50" src="/icons/bin.svg" alt="" /></button
 		>
 	</nav>
 
 	<h1 class="uppercase text-2xl">{kontoname}</h1>
 	<img class="h-20 mb-4" {src} alt="Foto" />
-	<div class="mb-3 xl:w-96">
-		<label for="exampleNumber0" class="form-label inline-block mb-2 text-gray-700"
-			>Gib einen Betrag in € ein:</label
-		>
-		<input
-			type="number"
-			class="
+	<form on:submit|preventDefault={handleUpdate}>
+		<div class="mb-3 xl:w-96">
+			<label for="exampleNumber0" class="form-label inline-block mb-2 text-gray-700"
+				>Gib einen Betrag in € ein:</label
+			>
+
+			<input
+				type="number"
+				class="
             form-control
             block
             w-full
@@ -96,25 +107,28 @@
             m-0
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
           "
-			id="betrag"
-			placeholder="0.00"
-			bind:value={betrag}
-		/>
-	</div>
-	<div>
-		<button
-			on:click={handleClickAusgabe}
-			class="my-4 bg-transparent hover:bg-rose-500 text-rose-700 font-semibold hover:text-white py-2 px-4 border border-rose-600 hover:border-transparent rounded"
-		>
-			Ausgabe
-		</button>
-		<button
-			on:click={handleClickEinnahme}
-			class="my-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded"
-		>
-			Einnahme
-		</button>
-	</div>
+				id="betrag"
+				placeholder="0.00"
+				bind:value={betrag}
+			/>
+		</div>
+		<div>
+			<button
+				on:click={handleClickAusgabe}
+				type="submit"
+				class="my-4 bg-transparent hover:bg-rose-500 text-rose-700 font-semibold hover:text-white py-2 px-4 border border-rose-600 hover:border-transparent rounded"
+			>
+				Ausgabe
+			</button>
+			<button
+				on:click={handleClickEinnahme}
+				type="submit"
+				class="my-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded"
+			>
+				Einnahme
+			</button>
+		</div>
 
-	<h2 class={style}>{kontostand} €</h2>
+		<h2 class={style}>{kontostand} €</h2>
+	</form>
 </div>

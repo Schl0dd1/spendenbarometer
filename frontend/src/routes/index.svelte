@@ -1,6 +1,10 @@
 <script>
 	import KontoCard from '../components/KontoCard.svelte';
 	import CreateNewAccount from '../components/createNewAccount.svelte';
+	//import { konten } from '../stores/data_store';
+
+	//fetch data from data_store:
+	//let filteredKonten = [...$konten];
 
 	//durch daten aus datenbank ersetzen:
 	let konten = [
@@ -10,9 +14,9 @@
 			kontostand: 0,
 			src_img: '/img/the-bear.webp',
 			alle_buchungen: [
-				{ id: 1, betrag: 20, beschreibung: 'Taschengeld' },
-				{ id: 2, betrag: -1.2, beschreibung: 'Kaugummis' },
-				{ id: 3, betrag: -5.0, beschreibung: 'Kino' }
+				{ id: 1, betrag: 20, beschreibung: 'Taschengeld', date: '' },
+				{ id: 2, betrag: -1.2, beschreibung: 'Kaugummis', date: '' },
+				{ id: 3, betrag: -5.0, beschreibung: 'Kino', date: '' }
 			]
 		},
 		{
@@ -37,6 +41,10 @@
 		neuesKonto.id = konten.length + 1;
 		konten = [e.detail, ...konten];
 		console.log(konten);
+	};
+
+	const createBuchung = (e) => {
+		console.log(e.detail);
 	};
 </script>
 
