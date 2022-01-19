@@ -6,21 +6,22 @@ from .models import Konto
 
 class KontoResource(DjangoResource):
     preparer = FieldsPreparer(
-    fields={
-    "id": "id",
-    "kontoname": "konto_name",
-    "kontostand":"aktueller_kontostand"
-
-    }
+        fields={
+            "id": "id",
+            "kontoname": "konto_name",
+            "kontostand": "aktueller_kontostand",
+        }
     )
-    def detail(self, pk):
-        konto =Konto.objects.get(pk=pk)
-        return  konto
 
-    
+    def detail(self, pk):
+        konto = Konto.objects.get(pk=pk)
+        return konto
 
     def is_authenticated(self):
         return self.request.user.is_authenticated
 
     def list(self):
         return Konto.objects.all()
+
+    def create(self):
+        return Konto.objects.create(konto_name=self.data["kontoname"])

@@ -4,34 +4,32 @@
 	import CreateNewAccount from '../components/createNewAccount.svelte';
 	import Kontoname from './[kontoname].svelte';
 
-	//import { konten } from '../stores/data_store';
+	import { konten } from '../stores/data_store';
 
-	//fetch data from data_store:
-	//let filteredKonten = [...$konten];
+	// fetch data from data_store:
+	let filteredKonten = [...$konten];
 
 	//durch daten aus datenbank ersetzen:
-	let konten = [
-		{
-			id: 1,
-			kontoname: 'Hanni',
-			kontostand: 0,
-			src_img: '/img/the-bear.webp',
-			alle_buchungen: [
-				{ id: 1, betrag: 20, beschreibung: 'Taschengeld', date: '' },
-				{ id: 2, betrag: -1.2, beschreibung: 'Kaugummis', date: '' },
-				{ id: 3, betrag: -5.0, beschreibung: 'Kino', date: '' }
-			],
-			show: false
-		},
-		{
-			id: 2,
-			kontoname: 'Nanni',
-			kontostand: 30,
-			src_img: '/img/the-cat.webp',
-			alle_buchungen: [],
-			show: false
-		}
-	];
+	// let konten = [
+	// 	{
+	// 		id: 1,
+	// 		kontoname: 'Hanni',
+	// 		kontostand: 0,
+	// 		src_img: '/img/the-bear.webp',
+	// 		alle_buchungen: [
+	// 			{ id: 1, betrag: 20, beschreibung: 'Taschengeld', date: '' },
+	// 			{ id: 2, betrag: -1.2, beschreibung: 'Kaugummis', date: '' },
+	// 			{ id: 3, betrag: -5.0, beschreibung: 'Kino', date: '' }
+	// 		]
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		kontoname: 'Nanni',
+	// 		kontostand: 30,
+	// 		src_img: '/img/the-cat.webp',
+	// 		alle_buchungen: []
+	// 	}
+	// ];
 
 	const deleteKonto = (e) => {
 		let konto_id = e.detail;
@@ -41,11 +39,15 @@
 		}
 	};
 
+	//fetch erzeugen, dass ein post auf api-konten macht
+	// const createKonto = (e) => {
+
+	// }
 	const createKonto = (e) => {
 		let neuesKonto = e.detail;
 		neuesKonto.id = konten.length + 1;
 		konten = [e.detail, ...konten];
-		console.log(konten);
+		console.log(neuesKonto);
 	};
 
 	// const createBuchung = (e) => {
@@ -62,7 +64,7 @@
 <svelte:head><title>Taschengeldapp</title></svelte:head>
 
 <div class="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
-	{#each konten as konto (konto.id)}
+	{#each $konten as konto (konto.id)}
 		{#if show === false}
 			<SmallCard
 				kontoname={konto.kontoname}

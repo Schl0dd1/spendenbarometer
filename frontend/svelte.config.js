@@ -12,6 +12,14 @@ const config = {
 
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte'
+		// vite: {
+		// 	server: {
+		// 		proxy: {
+		// 			'/admin': 'http://localhost:8000',
+		// 			'/api': 'http://localhost:8000'
+		// 		}
+		// 	}
+		// }
 	}
 };
 
