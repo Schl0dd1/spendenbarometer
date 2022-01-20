@@ -17,11 +17,10 @@
 	const handleSubmit = (e) => {
 		if (text.trim().length > 2) {
 			const newKonto = {
-				id: uuidv4(), //wird überschrieben
-				kontoname: text,
-				kontostand: 0,
-				src_img: '',
-				alle_buchungen: []
+				kontoname: text
+				// kontostand: 0,
+				// src_img: '',
+				// alle_buchungen: []
 			};
 			dispatch('create-konto', newKonto);
 		}

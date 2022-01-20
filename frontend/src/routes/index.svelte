@@ -40,15 +40,18 @@
 	};
 
 	//fetch erzeugen, dass ein post auf api-konten macht
-	// const createKonto = (e) => {
 
-	// }
-	const createKonto = (e) => {
-		let neuesKonto = e.detail;
-		neuesKonto.id = konten.length + 1;
-		konten = [e.detail, ...konten];
-		console.log(neuesKonto);
-	};
+	async function createKonto(e) {
+		let data = e.detail;
+		console.log(data);
+		const res = await fetch('http://localhost:8000/api/konten', {
+			method: 'POST',
+			credentials: 'include',
+			body: JSON.stringify({
+				data
+			})
+		});
+	}
 
 	// const createBuchung = (e) => {
 	// 	console.log(e.detail);
