@@ -4,28 +4,28 @@
 	export let kontostand;
 	//export let src;
 	export let betrag;
-	export let buchungen = [];
+	// export let buchungen = [];
 	import { fade } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 	//import { v4 as uuidv4 } from 'uuid';
+
+	let style = kontostand < 0 ? 'uppercase text-2xl text-rose-600 mx-4' : 'uppercase text-2xl mx-4';
+	let einnahme = null; // let einnahme für spätere datenbankspeicherung:
 
 	const dispatch = createEventDispatcher();
 	const handleDelete = (kontoId) => {
 		dispatch('delete-konto', kontoId);
 	};
 
-	let style = kontostand < 0 ? 'uppercase text-2xl text-rose-600 mx-4' : 'uppercase text-2xl mx-4';
-	let einnahme = null; // let einnahme für spätere datenbankspeicherung:
-
 	//add eintrag in einträge-array speichern
-	const handleUpdate = (e) => {
-		console.log(e);
-		const neuerEintrag = {
-			betrag: betrag,
-			beschreibung: '',
-			einnahme: einnahme,
-			date: Date.now()
+	const handleSubmit = (e) => {
+		const newBuchung = {
+			id: konto.id,
+			buchungsbetrag: betrag,
+			einnahme: einnahme
 		};
+		dispatch('update-konto', newBuchung);
+
 		if (isNaN(betrag)) {
 			alert('Gib eine Zahl ein!');
 		} else {
@@ -74,7 +74,7 @@
 	</div>
 
 	{#if show === true}
-		<form on:submit|preventDefault={handleUpdate}>
+		<form on:submit|preventDefault={handleSubmit}>
 			<div class="mb-3 mt-4 xl:w-96 flex flex-col">
 				<label for="betrag" class="form-label text-gray-700 ">Neue Buchung:</label>
 
@@ -105,14 +105,18 @@
 			</div>
 			<div>
 				<button
-					on:click={() => (einnahme = false)}
+					on:click={() => {
+						einnahme = false;
+					}}
 					type="submit"
 					class="my-4 bg-transparent hover:bg-rose-500 text-rose-700 font-semibold hover:text-white py-2 px-4 border border-rose-600 hover:border-transparent rounded"
 				>
 					Ausgabe
 				</button>
 				<button
-					on:click={() => (einnahme = true)}
+					on:click={() => {
+						einnahme = true;
+					}}
 					type="submit"
 					class="my-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded"
 				>

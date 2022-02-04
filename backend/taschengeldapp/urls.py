@@ -13,6 +13,7 @@ urlpatterns = [
     path("neues_konto/", views.neues_konto, name="neues_konto"),
     path("api/konten/", include(KontoResource.urls())),
     path("api/buchungen/", include(BuchungResource.urls())),
+    path("api/buchungen/<pk>/", include(BuchungResource.urls())),
     # path(
     #     "api/buchungen/<pk>/",
     #     include(BuchungResource.as_detail(), name="api_buchung_detail"),

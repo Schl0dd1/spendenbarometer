@@ -1,13 +1,31 @@
 <script>
 	import KontoCard from '../components/KontoCard.svelte';
 	import CreateNewAccount from '../components/createNewAccount.svelte';
-	import Kontoname from './[kontoname].svelte';
 
 	import { konten, buchungen } from '../stores/data_store';
 
 	// fetch data from data_store:
 	let filteredKonten = [...$konten];
 	let filteredBuchungen = [...$buchungen];
+
+	//neue Buchung in db anlegen:
+	const createBuchung = async (e) => {
+		let data = e.detail; //Object{id:,buchungsbetrag:,einnahme:}
+		console.log(data);
+		const res = await fetch('http://localhost:8000/api/buchungen/', {
+			method: 'POST',
+			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Access-Control-Allow-Origin': '*'
+			},
+			body: JSON.stringify({
+				data
+			})
+		});
+	};
+
+	//kontostand in db updaten:
 
 	//Konto löschen
 	const deleteKonto = async (e) => {
@@ -67,6 +85,7 @@
 					kontostand={konto.kontostand}
 					{konto}
 					on:delete-konto={deleteKonto}
+					on:update-konto={createBuchung}
 				/>
 			{/each}
 		</div>

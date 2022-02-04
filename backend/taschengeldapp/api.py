@@ -27,8 +27,11 @@ class BuchungResource(DjangoResource):
         return Buchung.objects.all()
 
     def create(self):
+        print(self.data)
         return Buchung.objects.create(
-            konto=self.data["kontoId"], betrag=self.data["betrag"]
+            konto=Konto.objects.get(id=self.data["data"]["id"]),
+            betrag=self.data["data"]["buchungsbetrag"],
+            einnahme=self.data["data"]["einnahme"],
         )
 
     def delete(self, pk):
@@ -65,7 +68,7 @@ class KontoResource(DjangoResource):
         except Konto.DoesNotExist:
             konto = Konto()
 
-        konto.konto_name = self.data["kontoname"]
+        konto.aktueller_kontostand = self.data["data"]["kontostand"]
         konto.save()
         return konto
 
