@@ -30,7 +30,7 @@
 
 <form on:submit|preventDefault={handleSubmit}>
 	<div
-		class="input-group list-none p-6 bg-gray-100 text-gray-800 text-center rounded-md shadow-sm hover:shadow-md flex flex-col items-center"
+		class="glass input-group list-none p-6 bg-gray-100 text-gray-800 text-center rounded-md shadow-sm hover:shadow-md flex flex-col items-center"
 		href={``}
 	>
 		<input
@@ -59,7 +59,7 @@
 		<button
 			type="submit"
 			disabled={btnDisabled}
-			class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+			class="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-blue-500 py-2 px-4 border border-white hover:border-transparent hover:bg-white rounded"
 			>Neues Konto anlegen</button
 		>
 	</div>
@@ -69,12 +69,10 @@
 </form>
 
 <style>
-	/* @tailwind utilities;
-	@tailwind base;
-	@tailwind components;
-
-
-	.btn-create {
-		@apply .bg-transparent .hover:bg-blue-500 .text-blue-700 .font-semibold .hover:text-white .py-2 .px-4 .border-blue-500 .hover:border-transparent .rounded; 
-	}*/
+	.glass {
+		background: rgba(255, 235, 233, 0.15);
+		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+		backdrop-filter: blur(5px);
+		border-radius: 10px;
+	}
 </style>

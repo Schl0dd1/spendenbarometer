@@ -1,91 +1,76 @@
 <script>
-	import SmallCard from '../components/smallCard.svelte';
 	import KontoCard from '../components/KontoCard.svelte';
 	import CreateNewAccount from '../components/createNewAccount.svelte';
 	import Kontoname from './[kontoname].svelte';
 
-	import { konten } from '../stores/data_store';
+	import { konten, buchungen } from '../stores/data_store';
 
 	// fetch data from data_store:
 	let filteredKonten = [...$konten];
+	let filteredBuchungen = [...$buchungen];
 
-	//durch daten aus datenbank ersetzen:
-	// let konten = [
-	// 	{
-	// 		id: 1,
-	// 		kontoname: 'Hanni',
-	// 		kontostand: 0,
-	// 		src_img: '/img/the-bear.webp',
-	// 		alle_buchungen: [
-	// 			{ id: 1, betrag: 20, beschreibung: 'Taschengeld', date: '' },
-	// 			{ id: 2, betrag: -1.2, beschreibung: 'Kaugummis', date: '' },
-	// 			{ id: 3, betrag: -5.0, beschreibung: 'Kino', date: '' }
-	// 		]
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		kontoname: 'Nanni',
-	// 		kontostand: 30,
-	// 		src_img: '/img/the-cat.webp',
-	// 		alle_buchungen: []
-	// 	}
-	// ];
-
-	const deleteKonto = (e) => {
+	//Konto löschen
+	const deleteKonto = async (e) => {
 		let konto_id = e.detail;
+		console.log(konto_id);
 		let text = 'Willst du dieses Konto unwiderruflich löschen?';
 		if (confirm(text) == true) {
-			konten = konten.filter((konto) => konto.id != konto_id);
+			// filteredKonten = filteredKonten.filter((konto) => konto.id != konto_id);
+			// console.log(filteredKonten);
+			const res = await fetch(`http://localhost:8000/api/konten/${konto_id}/`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json'
+					// 'Access-Control-Allow-Origin': '*'
+				},
+				body: JSON.stringify({
+					konto_id
+				})
+			});
+			location.reload();
 		}
 	};
 
+	//Neues Konto anlegen:
 	//fetch erzeugen, dass ein post auf api-konten macht
-
-	async function createKonto(e) {
+	const createKonto = async (e) => {
 		let data = e.detail;
-		console.log(data);
-		const res = await fetch('http://localhost:8000/api/konten', {
+		console.log(data); // Object { kontoname: "inputvalue"}
+		const res = await fetch('http://localhost:8000/api/konten/', {
 			method: 'POST',
 			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Access-Control-Allow-Origin': '*'
+			},
 			body: JSON.stringify({
 				data
 			})
 		});
-	}
-
-	// const createBuchung = (e) => {
-	// 	console.log(e.detail);
-	// };
-	let show = false;
-	const showCard = () => {
-		show = show ? false : true;
-		console.log(show);
+		location.reload();
 	};
+
+	//kontostand in db updaten:
 </script>
 
-<h1 class="text-4xl text-center my-8 uppercase">Taschengeldapp</h1>
 <svelte:head><title>Taschengeldapp</title></svelte:head>
+<main>
+	<div
+		class="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-blue-500 to-green-700"
+	>
+		<h1 class="text-4xl text-center text-white my-6 uppercase">Taschengeldapp</h1>
+		<!-- md:grid-cols-1 to -2/-3 angabe, wie viel container in einer reihe sein sollen -->
+		<div class="py-4 grid gap-4 md:grid-cols-1 grid-cols-1">
+			{#each $konten as konto (konto.id)}
+				<KontoCard
+					kontoname={konto.kontoname}
+					kontostand={konto.kontostand}
+					{konto}
+					on:delete-konto={deleteKonto}
+				/>
+			{/each}
+		</div>
 
-<div class="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
-	{#each $konten as konto (konto.id)}
-		{#if show === false}
-			<SmallCard
-				kontoname={konto.kontoname}
-				kontostand={konto.kontostand}
-				{konto}
-				on:toggle={showCard}
-			/>
-		{:else}
-			<KontoCard
-				kontoname={konto.kontoname}
-				kontostand={konto.kontostand}
-				src={konto.src_img}
-				alle_buchungen={konto.alle_buchungen}
-				{konto}
-				on:delete-konto={deleteKonto}
-			/>
-		{/if}
-	{/each}
-</div>
-
-<CreateNewAccount on:create-konto={createKonto} />
+		<CreateNewAccount on:create-konto={createKonto} />
+	</div>
+</main>

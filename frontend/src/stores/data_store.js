@@ -18,3 +18,22 @@ const fetchKonten = async () => {
 };
 
 if (browser) fetchKonten();
+
+export const buchungen = writable([]);
+const fetchBuchungen = async () => {
+	const url = 'http://localhost:8000/api/buchungen/';
+	const res = await fetch(url, { credentials: 'include' });
+	const data = await res.json();
+	console.log(data);
+	const loadedBuchungen = data?.objects?.map((data) => {
+		return {
+			id: data.id,
+			kontoId: data.kontoId,
+			beschreibung: data.beschreibung,
+			betrag: data.betrag
+		};
+	});
+	buchungen.set(loadedBuchungen);
+};
+
+if (browser) fetchBuchungen();
