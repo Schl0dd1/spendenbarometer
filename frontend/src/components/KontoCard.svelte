@@ -1,23 +1,22 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
+
 	export let konto;
 	export let kontoname;
 	export let kontostand;
-	//export let src;
 	export let betrag;
-	// export let buchungen = [];
-	import { fade } from 'svelte/transition';
-	import { createEventDispatcher } from 'svelte';
-	//import { v4 as uuidv4 } from 'uuid';
 
-	let style = kontostand < 0 ? 'uppercase text-2xl text-rose-600 mx-4' : 'uppercase text-2xl mx-4';
-	let einnahme = null; // let einnahme für spätere datenbankspeicherung:
+	//responsive variable style Kontostand rot-schwarz
+	$: style = kontostand < 0 ? 'uppercase text-2xl text-rose-600 mx-4' : 'uppercase text-2xl mx-4';
+	let einnahme = null;
 
+	//Delete-Button löscht Konto
 	const dispatch = createEventDispatcher();
 	const handleDelete = (kontoId) => {
 		dispatch('delete-konto', kontoId);
 	};
 
-	//add eintrag in einträge-array speichern
+	//neue Buchung erzeugen
 	const handleSubmit = (e) => {
 		const newBuchung = {
 			id: konto.id,
@@ -30,23 +29,21 @@
 			alert('Gib eine Zahl ein!');
 		} else {
 			if (betrag < 0) {
-				betrag = betrag * -1; //korrektur, sollte der user "-" mit eintippen
+				betrag = betrag * -1;
 			}
-			//kontostand-update:
 			einnahme = einnahme ? (kontostand += betrag) : (kontostand -= betrag);
 			kontostand = Math.round(kontostand * 100) / 100;
-			//zurücksetzten des betrags auf 0, eingegebener betrag beleibt in neuerEintrag gespeichert:
+			console.log(kontostand);
 			betrag = null;
-			//kontostand rot, sollte er sich im Minus befinden:
-			style = kontostand < 0 ? 'uppercase text-2xl text-rose-600 mx-4' : 'uppercase text-2xl mx-4';
 		}
 	};
 
-	//Pencil-button: eingabefeld zeigen/verstecken:
+	//Show Eingabefeld
 	let show = false;
 	const toggle = () => {
 		show = show ? false : true;
 	};
+
 </script>
 
 <div
@@ -105,18 +102,14 @@
 			</div>
 			<div>
 				<button
-					on:click={() => {
-						einnahme = false;
-					}}
+					on:click={() => (einnahme = false)}
 					type="submit"
 					class="my-4 bg-transparent hover:bg-rose-500 text-rose-700 font-semibold hover:text-white py-2 px-4 border border-rose-600 hover:border-transparent rounded"
 				>
 					Ausgabe
 				</button>
 				<button
-					on:click={() => {
-						einnahme = true;
-					}}
+					on:click={() => (einnahme = true)}
 					type="submit"
 					class="my-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded"
 				>
@@ -126,22 +119,5 @@
 		</form>
 	{/if}
 
-	<!-- <div>
-		<ul>
-			{#each buchungen as buchung}
-				<li>{buchung.betrag}}</li>{/each} 
-		</ul>
-	</div> -->
 </div>
 
-<style>
-	.glass {
-		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-		backdrop-filter: blur(5px);
-		border-radius: 10px;
-	}
-
-	/* h1 {
-		@apply text-red-500;
-	} */
-</style>

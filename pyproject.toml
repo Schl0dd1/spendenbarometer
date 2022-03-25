@@ -10,6 +10,7 @@ django = "<4"
 django-environ = "*"
 django-moneyfield = "^0.2.1"
 restless = "^2.2.0"
+django-cors-headers = "*"
 
 [tool.poetry.dev-dependencies]
 ipdb = "*"

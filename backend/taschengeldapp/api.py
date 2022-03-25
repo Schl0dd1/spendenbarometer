@@ -15,6 +15,7 @@ class BuchungResource(DjangoResource):
         }
     )
 
+
     def detail(self, pk):
         buchung = Buchung.objects.get(id=pk)
         return buchung

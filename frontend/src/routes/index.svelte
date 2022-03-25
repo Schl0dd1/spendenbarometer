@@ -11,7 +11,7 @@
 	//neue Buchung in db anlegen:
 	const createBuchung = async (e) => {
 		let data = e.detail; //Object{id:,buchungsbetrag:,einnahme:}
-		console.log(data);
+		//console.log(data);
 		const res = await fetch('http://localhost:8000/api/buchungen/', {
 			method: 'POST',
 			credentials: 'include',
@@ -30,9 +30,9 @@
 	//Konto löschen
 	const deleteKonto = async (e) => {
 		let konto_id = e.detail;
-		console.log(konto_id);
+		//console.log(konto_id);
 		let text = 'Willst du dieses Konto unwiderruflich löschen?';
-		if (confirm(text) == true) {
+		if (confirm(text) === true) {
 			// filteredKonten = filteredKonten.filter((konto) => konto.id != konto_id);
 			// console.log(filteredKonten);
 			const res = await fetch(`http://localhost:8000/api/konten/${konto_id}/`, {
@@ -53,7 +53,7 @@
 	//fetch erzeugen, dass ein post auf api-konten macht
 	const createKonto = async (e) => {
 		let data = e.detail;
-		console.log(data); // Object { kontoname: "inputvalue"}
+		//console.log(data); // Object { kontoname: "inputvalue"}
 		const res = await fetch('http://localhost:8000/api/konten/', {
 			method: 'POST',
 			credentials: 'include',
