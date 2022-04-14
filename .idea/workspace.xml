@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43a43f0b-4815-4921-aeef-e6c8f579821c" name="Changes" comment="Taschengeld funktionsfähiger Zwischenstand">
+    <list default="true" id="43a43f0b-4815-4921-aeef-e6c8f579821c" name="Changes" comment="Taschengeld funktionsfähiger Zwischenstand (Merging frontend backend)">
       <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/src/components/Buchung.svelte" afterDir="false" />
@@ -83,7 +83,7 @@
       <workItem from="1648824611999" duration="641000" />
       <workItem from="1649057245927" duration="18000" />
       <workItem from="1649670561884" duration="138000" />
-      <workItem from="1649840566099" duration="26910000" />
+      <workItem from="1649840566099" duration="27319000" />
     </task>
     <task id="LOCAL-00001" summary="Taschengeld funktionsfähiger Zwischenstand">
       <created>1648200141296</created>
@@ -92,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648200141296</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Taschengeld funktionsfähiger Zwischenstand (Merging frontend backend)">
+      <created>1649950381005</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649950381005</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Taschengeld funktionsfähiger Zwischenstand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Taschengeld funktionsfähiger Zwischenstand" />
+    <MESSAGE value="Taschengeld funktionsfähiger Zwischenstand (Merging frontend backend)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Taschengeld funktionsfähiger Zwischenstand (Merging frontend backend)" />
   </component>
 </project>
