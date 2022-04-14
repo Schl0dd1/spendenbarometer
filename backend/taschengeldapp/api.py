@@ -12,9 +12,10 @@ class BuchungResource(DjangoResource):
             "kontoId": "konto.id",
             "beschreibung": "beschreibung",
             "betrag": "betrag",
+            "einnahme": "einnahme",
+            "buchungsdatum": "buchungsdatum",
         }
     )
-
 
     def detail(self, pk):
         buchung = Buchung.objects.get(id=pk)
@@ -30,8 +31,8 @@ class BuchungResource(DjangoResource):
     def create(self):
         print(self.data)
         return Buchung.objects.create(
-            konto=Konto.objects.get(id=self.data["data"]["id"]),
-            betrag=self.data["data"]["buchungsbetrag"],
+            konto=Konto.objects.get(id=self.data["data"]["kontoId"]),
+            betrag=self.data["data"]["betrag"],
             einnahme=self.data["data"]["einnahme"],
         )
 
@@ -44,13 +45,27 @@ class KontoResource(DjangoResource):
         fields={
             "id": "id",
             "kontoname": "konto_name",
-            "kontostand": "aktueller_kontostand",
+
         }
     )
 
+    @skip_prepare
     def detail(self, pk):
+
         konto = Konto.objects.get(pk=pk)
-        return konto
+        buchungen = Buchung.objects.filter(konto_id=konto.id)
+        # buchungen = Buchung.objects.filter(konto=konto) same like 57
+        # buchungen = konto.buchungen.all() same like 57
+        return {
+            "id": konto.id,
+            "kontoname": konto.konto_name,
+            "buchungen": [{
+                "id": b.id,
+                "betrag": b.betrag,
+                "beschreibung": b.beschreibung,
+                "einnahme": b.einnahme,
+            } for b in buchungen],
+        }
 
     def is_authenticated(self):
         # return self.request.user.is_authenticated

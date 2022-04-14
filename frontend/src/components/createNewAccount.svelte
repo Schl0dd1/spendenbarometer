@@ -18,9 +18,6 @@
 		if (text.trim().length > 2) {
 			const newKonto = {
 				kontoname: text
-				// kontostand: 0,
-				// src_img: '',
-				// alle_buchungen: []
 			};
 			dispatch('create-konto', newKonto);
 		}
@@ -30,8 +27,7 @@
 
 <form on:submit|preventDefault={handleSubmit}>
 	<div
-		class="glass input-group list-none p-6 bg-gray-100 text-gray-800 text-center rounded-md shadow-sm hover:shadow-md flex flex-col items-center"
-		href={``}
+		class="glass py-5 bg-gray-100 text-gray-800 text-center shadow-sm hover:shadow-md absolute bottom-0 w-full"
 	>
 		<input
 			type="text"
@@ -39,21 +35,15 @@
 			bind:value={text}
 			placeholder="Kontoname"
 			class="
-        form-control
-        block
-        w-2/3
+		w-1/3
         px-3
         py-1.5
-        text-base
+        text-center
         font-normal
         text-grey-700
         bg-white bg-clip-padding
         border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
         m-3
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
 		/>
 		<button
@@ -73,6 +63,5 @@
 		background: rgba(255, 235, 233, 0.15);
 		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 		backdrop-filter: blur(5px);
-		border-radius: 10px;
 	}
 </style>

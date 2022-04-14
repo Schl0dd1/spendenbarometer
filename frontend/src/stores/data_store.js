@@ -30,7 +30,8 @@ const fetchBuchungen = async () => {
 			id: data.id,
 			kontoId: data.kontoId,
 			beschreibung: data.beschreibung,
-			betrag: data.betrag
+			betrag: data.betrag,
+			buchungsdatum: data.buchungsdatum
 		};
 	});
 	buchungen.set(loadedBuchungen);

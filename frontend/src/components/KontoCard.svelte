@@ -11,113 +11,61 @@
 	let einnahme = null;
 
 	//Delete-Button löscht Konto
-	const dispatch = createEventDispatcher();
-	const handleDelete = (kontoId) => {
-		dispatch('delete-konto', kontoId);
-	};
-
-	//neue Buchung erzeugen
-	const handleSubmit = (e) => {
-		const newBuchung = {
-			id: konto.id,
-			buchungsbetrag: betrag,
-			einnahme: einnahme
-		};
-		dispatch('update-konto', newBuchung);
-
-		if (isNaN(betrag)) {
-			alert('Gib eine Zahl ein!');
-		} else {
-			if (betrag < 0) {
-				betrag = betrag * -1;
-			}
-			einnahme = einnahme ? (kontostand += betrag) : (kontostand -= betrag);
-			kontostand = Math.round(kontostand * 100) / 100;
-			console.log(kontostand);
-			betrag = null;
-		}
-	};
-
-	//Show Eingabefeld
-	let show = false;
-	const toggle = () => {
-		show = show ? false : true;
-	};
-
 </script>
 
 <div
-	class=" list-none p-6 bg-gray-100 text-grey-800 text-center rounded-md shadow-sm flex flex-col"
+	class=" py-3 bg-gray-100 text-grey-800 text-center rounded-md shadow-sm col-start-2 col-span-10"
 >
-	<div class=" text-center flex flex-row items-center justify-between">
-		<p class="uppercase text-2xl mx-2">{kontoname}</p>
+	<div class=" text-center flex items-center justify-between">
+		<p class="uppercase text-2xl mx-5">{kontoname}</p>
 		<p class={style}>{kontostand} €</p>
 
-		<nav class="flex">
-			<button class="mx-2 text-lg w-5 hover:shadow-md">
-				<img class="opacity-50" src="/icons/pencil.svg" alt="" on:click={toggle} /></button
-			>
-			<button class="mx-2 text-lg w-5 hover:shadow-md">
-				<img
-					class="opacity-50"
-					src="/icons/list-numbered.svg"
-					alt="uebersicht aus- und einnahmen"
-				/></button
-			>
-			<button class="mx-2 text-lg w-5 hover:shadow-md" on:click={() => handleDelete(konto.id)}>
-				<img class="opacity-50" src="/icons/bin.svg" alt="" /></button
-			>
-		</nav>
+		<button class="mx-2 text-lg w-5 hover:shadow-md" on:click={() => handleDelete(konto.id)}>
+			<img class="opacity-50" src="/icons/bin.svg" alt="" /></button
+		>
 	</div>
 
-	{#if show === true}
-		<form on:submit|preventDefault={handleSubmit}>
-			<div class="mb-3 mt-4 xl:w-96 flex flex-col">
-				<label for="betrag" class="form-label text-gray-700 ">Neue Buchung:</label>
+	<form on:submit|preventDefault={handleSubmit} class="">
+		<label for="betrag" class="mr-5">Neue Buchung:</label>
 
-				<input
-					type="number"
-					step="0.01"
-					class="
-            form-control
-			flex-auto
-			w-full
-			px-3
-            py-1.5
-            text-center
-            font-normal
-            text-grey-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-          "
-					id="betrag"
-					placeholder="Betrag in €"
-					bind:value={betrag}
-				/>
-			</div>
-			<div>
-				<button
-					on:click={() => (einnahme = false)}
-					type="submit"
-					class="my-4 bg-transparent hover:bg-rose-500 text-rose-700 font-semibold hover:text-white py-2 px-4 border border-rose-600 hover:border-transparent rounded"
-				>
-					Ausgabe
-				</button>
-				<button
-					on:click={() => (einnahme = true)}
-					type="submit"
-					class="my-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded"
-				>
-					Einnahme
-				</button>
-			</div>
-		</form>
-	{/if}
+		<input
+			type="number"
+			step="0.01"
+			class="
+					form-control
+					flex-auto
+					w-1/3
+					px-3
+					py-1.5
+					text-center
+					font-normal
+					text-grey-700
+					bg-white bg-clip-padding
+					border border-solid border-gray-300
+					rounded
+					transition
+					ease-in-out
+					m-0
+					focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+			  		"
+			id="betrag"
+			placeholder="Betrag in €"
+			bind:value={betrag}
+		/>
 
+		<button
+			on:click={() => (einnahme = false)}
+			type="submit"
+			class="my-4 bg-transparent hover:bg-rose-500 text-rose-700 font-semibold hover:text-white py-2 px-4 border border-rose-600 hover:border-transparent rounded"
+		>
+			Ausgabe
+		</button>
+		<button
+			on:click={() => (einnahme = true)}
+			type="submit"
+			class="my-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded"
+		>
+			Einnahme
+		</button>
+	</form>
 </div>
-
