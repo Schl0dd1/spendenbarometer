@@ -51,6 +51,7 @@
 		}
 	};
 
+	//funktioniert:
 	export const createBuchung = async (e) => {
 		let data = e.detail;
 		console.log(e);
@@ -66,16 +67,27 @@
 				data
 			})
 		});
-		console.log('went thgrouh');
-		//location.reload();
+		location.reload();
+	};
+
+	const kontostand = () => {
+		let e_list = konto.buchungen.filter((buchung) => buchung.einnahme === true);
+		let e = e_list.map((buchung) => buchung.betrag).reduce((prev, curr) => prev + curr, 0);
+		let a_list = konto.buchungen.filter((buchung) => buchung.einnahme === false);
+		let a = a_list.map((buchung) => buchung.betrag).reduce((prev, curr) => prev + curr, 0);
+		let sum = 'Sum';
+		// console.log(a);
+		// console.log(sum);
+		console.log(konto.buchungen[konto.buchungen.length - 1]);
+		return sum;
 	};
 </script>
 
 <h1 class="text-3xl font-bold">{konto.kontoname}</h1>
-<h1 class="text-3xl font-bold text-right">{konto.kontostand} €</h1>
+<h1 class="text-3xl font-bold text-right">{kontostand()} €</h1>
 <h2 class="text-xl font-bold">Neuer Eintrag:</h2>
 <BuchungForm {konto} on:create-buchung={createBuchung} />
-{#each konto.buchungen as buchung, i}
+{#each konto.buchungen.reverse() as buchung, i}
 	{#if !showAll}
 		{#if i < 3}
 			<Buchung {buchung} index={buchung.id} />

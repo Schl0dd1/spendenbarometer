@@ -1,8 +1,4 @@
 <script>
-
-
-	import {deleteBuchung} from "../stores/BuchungStore.js";
-
 	export let buchung;
 
 	$: chooose_bgcolor = () => {
@@ -15,6 +11,21 @@
 			color = 'bg-white';
 		}
 		return color;
+	};
+
+	//funktioniert:
+	const deleteBuchung = async (e) => {
+		let b = buchung.id;
+		const res = await fetch(`http://localhost:8000/api/buchungen/${b}/`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				b
+			})
+		});
+		location.reload();
 	};
 </script>
 
@@ -30,7 +41,7 @@
 	<button
 		type="button"
 		class="text-sm bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-		on:click={() => deleteBuchung(buchung.id)}
+		on:click={deleteBuchung}
 	>
 		Delete
 	</button>

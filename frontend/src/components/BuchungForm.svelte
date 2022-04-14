@@ -4,9 +4,9 @@
 
 	export let konto;
 	let kontostand;
-	$: betrag = null;
-	$: beschreibung = '';
-	$: einnahme = false;
+	let betrag = null;
+	let beschreibung = '';
+	let einnahme = false;
 
 	const handleSubmit = (e) => {
 		const newBuchung = {
@@ -16,6 +16,7 @@
 			einnahme: einnahme,
 			buchungsdatum: Date.now()
 		};
+		console.log(newBuchung);
 		dispatch('create-buchung', newBuchung);
 
 		if (isNaN(betrag)) {
@@ -25,6 +26,7 @@
 				betrag = betrag * -1;
 			}
 			betrag = null;
+			beschreibung = '';
 		}
 	};
 </script>
@@ -44,7 +46,7 @@
 		<input
 			bind:value={beschreibung}
 			type="text"
-			name="todo"
+			name="beschreibung"
 			placeholder="type in here..."
 			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500"
 		/>

@@ -32,6 +32,7 @@ class BuchungResource(DjangoResource):
         print(self.data)
         return Buchung.objects.create(
             konto=Konto.objects.get(id=self.data["data"]["kontoId"]),
+            beschreibung=self.data["data"]["beschreibung"],
             betrag=self.data["data"]["betrag"],
             einnahme=self.data["data"]["einnahme"],
         )
