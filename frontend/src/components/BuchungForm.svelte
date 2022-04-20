@@ -33,22 +33,22 @@
 
 <form on:submit|preventDefault={handleSubmit}>
 	<div class="flex flex-col text-sm mb-10">
-		<label for="betrag" class="mb-1">Betrag:</label>
+		<label for="betrag" class="mb-1 mt-4">Betrag:</label>
 		<input
 			bind:value={betrag}
 			type="number"
 			step="0.01"
 			name="betrag"
 			placeholder="type in here..."
-			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500"
+			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500 sm:w-1/3"
 		/>
-		<label for="todo" class="mt-2 mb-1">Verwendungszweck:</label>
+		<label for="todo" class="mt-4 mb-1">Verwendungszweck:</label>
 		<input
 			bind:value={beschreibung}
 			type="text"
 			name="beschreibung"
 			placeholder="type in here..."
-			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500"
+			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500 md:w-1/2"
 		/>
 		<div class="mt-2 mb-3">
 			<label>
@@ -61,7 +61,13 @@
 				Einnahme
 			</label>
 		</div>
-
-		<button type="submit" class="w-1/4 py-2 my-2 bg-violet-400 shadow-xl rounded"> Submit </button>
+		<div>
+			<button
+				type="submit"
+				class="py-2 px-6 text-white font-bold text-lg  py-2 my-2 bg-violet-500 shadow-xl rounded"
+			>
+				Submit
+			</button>
+		</div>
 	</div>
 </form>

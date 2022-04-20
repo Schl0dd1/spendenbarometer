@@ -30,7 +30,7 @@
 </script>
 
 <li
-	class={`${chooose_bgcolor()} flex items-center shadow-sm border border-gray-200 rounded-lg my-2 py-2 px-4`}
+	class={`${chooose_bgcolor()} text-lg flex items-center shadow-sm border border-gray-200 rounded-lg my-2 py-2 px-4`}
 >
 	<span class="flex-1 text-gray-800">
 		{buchung.betrag} €
@@ -40,9 +40,9 @@
 	</span>
 	<button
 		type="button"
-		class="text-sm bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+		class="text-sm font-bold bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
 		on:click={deleteBuchung}
 	>
-		Delete
+		löschen
 	</button>
 </li>

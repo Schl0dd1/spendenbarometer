@@ -1,18 +1,7 @@
 <script>
-	import KontoCard from '../components/KontoCard.svelte';
 	import CreateNewAccount from '../components/createNewAccount.svelte';
-	import { konten, buchungen } from '../stores/data_store';
-	import KontoListElement from '../components/KontoListElement.svelte';
-	import BuchungenList from '../components/BuchungenList.svelte';
+	import { buchungen, konten } from '../stores/data_store';
 
-	// fetch data from data_store:
-	let filteredKonten = [...$konten];
-	let filteredBuchungen = [...$buchungen];
-
-	//kontostand in db updaten:
-
-	//Neues Konto anlegen:
-	//fetch erzeugen, dass ein post auf api-konten macht
 	const createKonto = async (e) => {
 		let data = e.detail;
 		console.log(data); // Object { kontoname: "inputvalue"}
@@ -20,8 +9,8 @@
 			method: 'POST',
 			credentials: 'include',
 			headers: {
-				'Content-Type': 'application/json'
-				// 'Access-Control-Allow-Origin': '*'
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*'
 			},
 			body: JSON.stringify({
 				data
@@ -36,10 +25,11 @@
 	<div
 		class=" relative overflow-hidden items-center justify-center h-screen -my-8 bg-gradient-to-br from-blue-500 to-green-700"
 	>
-		<h1 class="text-4xl text-center text-white uppercase py-5">Taschengeldapp</h1>
+		<h1 class="text-4xl text-center text-white uppercase py-20">Taschengeld app</h1>
+		<h2 class="text-xl text-white text-center py-5">deine Konten:</h2>
 		<div class="flex justify-center">
 			{#each $konten as konto}
-				<a href={`/${konto.id}`}>
+				<a sveltekit:prefetch href={`/${konto.id}`}>
 					<li
 						class="flex items-center px-10 mx-5 justify-center shadow-sm shadow-white text-white text-xl border-2 border-white  rounded-lg my-2 py-2 px-4"
 					>

@@ -27,7 +27,7 @@
 
 <form on:submit|preventDefault={handleSubmit}>
 	<div
-		class="glass py-5 bg-gray-100 text-gray-800 text-center shadow-sm hover:shadow-md absolute bottom-0 w-full"
+		class="glass py-20 bg-gray-100 text-gray-800 text-center shadow-sm hover:shadow-md absolute bottom-0 w-full"
 	>
 		<input
 			type="text"

@@ -1,9 +1,12 @@
 <script context="module">
 	export async function load({ fetch, params }) {
 		const id = params.id;
-		const res = await fetch(`http://localhost:8000/api/konten/${id}`);
+		const res = await fetch(`http://localhost:8000/api/konten/${id}`, {
+			headers: {
+				'Access-Control-Allow-Origin': '*'
+			}
+		});
 		const konto = await res.json();
-		//console.log(konto);
 		if (res.ok) {
 			return {
 				props: {
@@ -12,8 +15,9 @@
 			};
 		}
 		return {
-			status: res.status,
-			error: new Error('Konto nicht gefunden')
+			status: 301,
+			//error: new Error('Konto nicht gefunden')
+			redirect: '/'
 		};
 	}
 </script>
@@ -35,11 +39,11 @@
 		if (confirm(text) === true) {
 			// filteredKonten = filteredKonten.filter((konto) => konto.id != konto_id);
 			// console.log(filteredKonten);
-			const res = await fetch(`http://localhost:8000/api/konten/${konto_id}/`, {
+			const res = await fetch(`http://localhost:8000/api/konten/${konto_id}`, {
 				method: 'DELETE',
 				headers: {
-					'Content-Type': 'application/json'
-					// 'Access-Control-Allow-Origin': '*'
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*'
 				},
 				body: JSON.stringify({
 					konto_id
@@ -47,7 +51,6 @@
 			});
 			await goto('/');
 			return;
-			// location.reload();
 		}
 	};
 
@@ -60,8 +63,8 @@
 			method: 'POST',
 			credentials: 'include',
 			headers: {
-				'Content-Type': 'application/json'
-				// 'Access-Control-Allow-Origin': '*'
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*'
 			},
 			body: JSON.stringify({
 				data
@@ -70,21 +73,27 @@
 		location.reload();
 	};
 
+	//geht das auch kürzer?
 	const kontostand = () => {
 		let e_list = konto.buchungen.filter((buchung) => buchung.einnahme === true);
-		let e = e_list.map((buchung) => buchung.betrag).reduce((prev, curr) => prev + curr, 0);
+		let e = e_list
+			.map((buchung) => buchung.betrag)
+			.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr), 0);
 		let a_list = konto.buchungen.filter((buchung) => buchung.einnahme === false);
-		let a = a_list.map((buchung) => buchung.betrag).reduce((prev, curr) => prev + curr, 0);
-		let sum = 'Sum';
-		// console.log(a);
-		// console.log(sum);
-		console.log(konto.buchungen[konto.buchungen.length - 1]);
+		let a = a_list
+			.map((buchung) => buchung.betrag)
+			.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr), 0);
+		let sum = (e - a).toFixed(2);
 		return sum;
 	};
 </script>
 
-<h1 class="text-3xl font-bold">{konto.kontoname}</h1>
-<h1 class="text-3xl font-bold text-right">{kontostand()} €</h1>
+<div class="text-right"><Button on:click={() => goto('/')} text="<< zur Übersicht" /></div>
+<div class="flex justify-between my-5">
+	<h1 class="text-3xl font-bold">{konto.kontoname}</h1>
+	<h1 class="text-3xl font-bold text-right">{kontostand()} €</h1>
+</div>
+
 <h2 class="text-xl font-bold">Neuer Eintrag:</h2>
 <BuchungForm {konto} on:create-buchung={createBuchung} />
 {#each konto.buchungen.reverse() as buchung, i}
@@ -97,5 +106,5 @@
 		<Buchung {buchung} index={buchung.id} />
 	{/if}
 {/each}
-<Button text="show All" color="bg-green-400" on:click={() => (showAll = !showAll)} />
-<Button text="delete Account" on:click={() => deleteKonto(konto.id)} />
+<Button text="alle Einträge" color="bg-green-500" on:click={() => (showAll = !showAll)} />
+<Button text="Konto löschen" on:click={() => deleteKonto(konto.id)} />
