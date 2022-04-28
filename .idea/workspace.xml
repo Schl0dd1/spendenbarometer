@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43a43f0b-4815-4921-aeef-e6c8f579821c" name="Changes" comment="Taschengeld funktionsfähiger Zwischenstand (Merging frontend backend)">
-      <change afterPath="$PROJECT_DIR$/frontend/src/hooks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/routes/__error.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/70f0a325-f772-4f5d-a647-8bca52f7155a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/70f0a325-f772-4f5d-a647-8bca52f7155a.xml" afterDir="false" />
+    <list default="true" id="43a43f0b-4815-4921-aeef-e6c8f579821c" name="Changes" comment="add errorPage, add hooks.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Buchung.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Buchung.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/BuchungForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/BuchungForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Button.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Button.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/createNewAccount.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/createNewAccount.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/[id].svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/[id].svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/svelte.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/svelte.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wagtail-wiki" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../typescript_tutorial" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/frontend/node_modules/prettier" />
@@ -82,7 +70,8 @@
       <workItem from="1649840566099" duration="35036000" />
       <workItem from="1650356561228" duration="680000" />
       <workItem from="1650443272426" duration="6456000" />
-      <workItem from="1650453358162" duration="1786000" />
+      <workItem from="1650453358162" duration="2664000" />
+      <workItem from="1650975480081" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="Taschengeld funktionsfähiger Zwischenstand">
       <created>1648200141296</created>
@@ -112,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649956265891</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add errorPage, add hooks.js">
+      <created>1650455292790</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650455292790</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +128,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Taschengeld funktionsfähiger Zwischenstand" />
     <MESSAGE value="Taschengeld funktionsfähiger Zwischenstand (Merging frontend backend)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Taschengeld funktionsfähiger Zwischenstand (Merging frontend backend)" />
+    <MESSAGE value="add errorPage, add hooks.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="add errorPage, add hooks.js" />
   </component>
 </project>
