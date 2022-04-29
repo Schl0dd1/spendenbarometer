@@ -11,5 +11,6 @@
 </script>
 
 <div class="text-4xl text-blue-500">
-	Was ist da los? <a href="/" class="font-bold">Hier</a> gehts zurück zur Übersicht
+	Hier gibts nen bug! Lade die Seite neu und das Konto erscheint!
+	<a href="/" class="font-bold">Hier</a> gehts zurück zur Übersicht
 </div>

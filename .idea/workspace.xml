@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43a43f0b-4815-4921-aeef-e6c8f579821c" name="Changes" comment="add errorPage, add hooks.js">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/graph.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/icons/ArrowLeft.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/routes/login.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/BuchungenList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/barometer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/[id].svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/[id].svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/__error.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/__error.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/list.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/list.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +45,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../typescript_tutorial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/src/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/frontend/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/frontend/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/components" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -72,6 +84,8 @@
       <workItem from="1650443272426" duration="6456000" />
       <workItem from="1650453358162" duration="2664000" />
       <workItem from="1650975480081" duration="66000" />
+      <workItem from="1651153115810" duration="6141000" />
+      <workItem from="1651175946382" duration="6940000" />
     </task>
     <task id="LOCAL-00001" summary="Taschengeld funktionsfähiger Zwischenstand">
       <created>1648200141296</created>
@@ -108,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650455292790</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add errorPage, add hooks.js">
+      <created>1651153314289</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651153314289</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

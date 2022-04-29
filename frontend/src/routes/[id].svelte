@@ -27,6 +27,7 @@
 	import BuchungForm from '../components/BuchungForm.svelte';
 	import Button from '../components/Button.svelte';
 	import { goto } from '$app/navigation';
+	import Graph from '../components/graph.svelte';
 
 	export let konto;
 
@@ -96,15 +97,17 @@
 
 <h2 class="text-xl font-bold">Neuer Eintrag:</h2>
 <BuchungForm {konto} on:create-buchung={createBuchung} />
-{#each konto.buchungen.reverse() as buchung, i}
-	{#if !showAll}
-		{#if i < 3}
-			<Buchung {buchung} index={buchung.id} />
-		{/if}
-	{/if}
-	{#if showAll}
-		<Buchung {buchung} index={buchung.id} />
-	{/if}
-{/each}
-<Button text="alle Einträge" color="bg-green-500" on:click={() => (showAll = !showAll)} />
-<Button text="Konto löschen" on:click={() => deleteKonto(konto.id)} />
+<div class="my-25"><Graph kontostand={kontostand()} /></div>
+
+<!--{#each konto.buchungen.reverse() as buchung, i}-->
+<!--	{#if !showAll}-->
+<!--		{#if i < 3}-->
+<!--			<Buchung {buchung} index={buchung.id} />-->
+<!--		{/if}-->
+<!--	{/if}-->
+<!--	{#if showAll}-->
+<!--		<Buchung {buchung} index={buchung.id} />-->
+<!--	{/if}-->
+<!--{/each}-->
+<!--<Button text="alle Einträge" color="bg-green-500" on:click={() => (showAll = !showAll)} />-->
+<!--<Button text="Konto löschen" on:click={() => deleteKonto(konto.id)} />-->
