@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43a43f0b-4815-4921-aeef-e6c8f579821c" name="Changes" comment="add errorPage, add hooks.js">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/graph.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/icons/ArrowLeft.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/routes/login.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/BuchungenList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/barometer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/BuchungForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/BuchungForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/graph.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/graph.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes/[id].svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/[id].svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/__error.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/__error.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/list.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/list.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/barometer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/barometer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/index.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +84,8 @@
       <workItem from="1650975480081" duration="66000" />
       <workItem from="1651153115810" duration="6141000" />
       <workItem from="1651175946382" duration="6940000" />
+      <workItem from="1651220467357" duration="1238000" />
+      <workItem from="1651221947523" duration="3932000" />
     </task>
     <task id="LOCAL-00001" summary="Taschengeld funktionsfähiger Zwischenstand">
       <created>1648200141296</created>
@@ -129,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651153314289</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add errorPage, add hooks.js">
+      <created>1651220494838</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651220494838</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

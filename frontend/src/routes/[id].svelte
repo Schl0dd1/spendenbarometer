@@ -99,15 +99,15 @@
 <BuchungForm {konto} on:create-buchung={createBuchung} />
 <div class="my-25"><Graph kontostand={kontostand()} /></div>
 
-<!--{#each konto.buchungen.reverse() as buchung, i}-->
-<!--	{#if !showAll}-->
-<!--		{#if i < 3}-->
-<!--			<Buchung {buchung} index={buchung.id} />-->
-<!--		{/if}-->
-<!--	{/if}-->
-<!--	{#if showAll}-->
-<!--		<Buchung {buchung} index={buchung.id} />-->
-<!--	{/if}-->
-<!--{/each}-->
-<!--<Button text="alle Einträge" color="bg-green-500" on:click={() => (showAll = !showAll)} />-->
-<!--<Button text="Konto löschen" on:click={() => deleteKonto(konto.id)} />-->
+{#each konto.buchungen.reverse() as buchung, i}
+	{#if !showAll}
+		{#if i < 3}
+			<Buchung {buchung} index={buchung.id} />
+		{/if}
+	{/if}
+	{#if showAll}
+		<Buchung {buchung} index={buchung.id} />
+	{/if}
+{/each}
+<Button text="alle Einträge" color="bg-green-500" on:click={() => (showAll = !showAll)} />
+<Button text="Konto löschen" on:click={() => deleteKonto(konto.id)} />

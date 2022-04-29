@@ -20,7 +20,7 @@
 	};
 </script>
 
-<svelte:head><title>Taschengeldapp</title></svelte:head>
+<svelte:head><title>Spendenbarometer</title></svelte:head>
 <main>
 	<div
 		class=" relative overflow-hidden items-center justify-center h-screen -my-8 bg-gradient-to-br from-blue-500 to-green-700"
@@ -28,15 +28,7 @@
 		<h1 class="text-4xl text-center text-white uppercase py-20">Taschengeld app</h1>
 		<h2 class="text-xl text-white text-center py-5">deine Konten:</h2>
 		<div class="flex justify-center">
-			{#each $konten as konto}
-				<a sveltekit:prefetch href={`/${konto.id}`}>
-					<li
-						class="flex items-center px-10 mx-5 justify-center shadow-sm shadow-white text-white text-xl border-2 border-white  rounded-lg my-2 py-2 px-4"
-					>
-						{konto.kontoname}
-					</li>
-				</a>
-			{/each}
+			{#each $konten as konto}{/each}
 		</div>
 
 		<CreateNewAccount on:create-konto={createKonto} />

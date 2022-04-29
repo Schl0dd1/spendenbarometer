@@ -6,8 +6,8 @@
 	export let kontostand;
 	let prozent = (kontostand / (2000 / 100)).toFixed().toString();
 	console.log(prozent);
-
-	$: fill = `h-[${prozent}%]`;
+	let fill = `h-[${prozent}%]`;
+	fill = 'h-[25%]';
 	console.log(fill);
 
 	$: showKontostand = false;
@@ -24,11 +24,12 @@
 					on:mouseout={() => {
 						showKontostand = false;
 					}}
-					class={` w-full bg-green-200 absolute bottom-0 h-[50%]`}
-				/>
-				{#if showKontostand}
-					<div class="absolute left-1/3 top-2">{kontostand} €</div>
-				{/if}
+					class="w-full bg-green-200 absolute bottom-0 {fill}"
+				>
+					{#if showKontostand}
+						<div class="absolute left-1/3 top-2">{kontostand} €</div>
+					{/if}
+				</div>
 			</div>
 		</div>
 		<div class="relative h-[600px] w-24 text-sm">
@@ -41,5 +42,4 @@
 		</div>
 	</div>
 	<div class="mt-6 font-bold text-xl">{text}</div>
-
 </div>
