@@ -1,6 +1,11 @@
+<script context="module">
+	import mapTouchToMouseFor from 'svelte-touch-to-mouse';
+</script>
+
 <script>
 	import ArrowLeft from './icons/ArrowLeft.svelte';
 
+	mapTouchToMouseFor('.mouse');
 	const goal = 2000;
 	export let text;
 	export let kontostand;
@@ -11,6 +16,15 @@
 	console.log(fill);
 
 	$: showKontostand = false;
+	//$: position = '';
+
+	function showDiv(event) {
+		kontostand = true;
+		let x = event.clientX;
+		let y = event.clientY;
+		document.getElementById('mouse').style.marginLeft = x + 'px';
+		document.getElementById('mouse').style.marginTop = y + 'px';
+	}
 </script>
 
 <div class="container text-center ">
@@ -18,16 +32,14 @@
 		<div class="my-3.5">
 			<div class="w-24 items-center m-auto  h-[600px] border relative">
 				<div
-					on:mouseover={() => {
-						showKontostand = true;
-					}}
+					on:mousemove={showDiv}
 					on:mouseout={() => {
 						showKontostand = false;
 					}}
 					class="w-full bg-green-200 absolute bottom-0 {fill}"
 				>
 					{#if showKontostand}
-						<div class="absolute left-1/3 top-2">{kontostand} €</div>
+						<div id="mouse" class={` absolute`}>{kontostand} €</div>
 					{/if}
 				</div>
 			</div>
@@ -43,3 +55,11 @@
 	</div>
 	<div class="mt-6 font-bold text-xl">{text}</div>
 </div>
+
+<style>
+	.mouse {
+		-webkit-touch-callout: none;
+		-ms-touch-action: none;
+		touch-action: none;
+	}
+</style>

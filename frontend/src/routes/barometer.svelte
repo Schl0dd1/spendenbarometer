@@ -4,9 +4,7 @@
 	import BuchungForm from '../components/BuchungForm.svelte';
 	// import { konto } from './[id].svelte';
 
-	let handleSubmit = () => {
-		console.log('submit');
-	};
+	//let konto;
 	let betrag;
 	let memberId;
 
@@ -30,23 +28,27 @@
 	};
 
 	//geht das auch kürzer?
-	const kontostand = (konto) => {
-		let e_list = konto.buchungen.filter((buchung) => buchung.einnahme === true);
-		let e = e_list
-			.map((buchung) => buchung.betrag)
-			.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr), 0);
-		let a_list = konto.buchungen.filter((buchung) => buchung.einnahme === false);
-		let a = a_list
-			.map((buchung) => buchung.betrag)
-			.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr), 0);
-		let sum = (e - a).toFixed(2);
-		return sum;
+	const kontostand = (k) => {
+		// 	let e_list = k.buchungen.filter((buchung) => buchung.einnahme === true);
+		// 	let e = e_list
+		// 		.map((buchung) => buchung.betrag)
+		// 		.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr), 0);
+		// 	let a_list = k.buchungen.filter((buchung) => buchung.einnahme === false);
+		// 	let a = a_list
+		// 		.map((buchung) => buchung.betrag)
+		// 		.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr), 0);
+		// 	let sum = (e - a).toFixed(2);
+		// 	return sum;
+		return 'Kontostand';
 	};
 </script>
 
-{#each $konten as konto}
-	<div class="text-center ">
-		<Graph kontostand={kontostand(konto.id)} text="geplante Direktkredite" />
-		<BuchungForm konto={konto.id} on:create-buchung={createBuchung} />
-	</div>
-{/each}
+<h1 class="text-4xl m-auto mb-6 text-center">Spendenbarometer</h1>
+<div class="flex justify-around">
+	{#each $konten as konto}
+		<div class="text-center ">
+			<Graph kontostand={kontostand(konto)} text={konto.kontoname} />
+			<BuchungForm konto={konto.id} on:create-buchung={createBuchung} />
+		</div>
+	{/each}
+</div>

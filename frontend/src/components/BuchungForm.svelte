@@ -38,7 +38,7 @@
 			step="100"
 			name="betrag"
 			placeholder="type in here..."
-			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500 m-auto sm:w-1/4"
+			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500 m-auto "
 		/>
 		<label class="mt-4 mb-1">MitgliedsNummer/Name Externe:</label>
 		<input
@@ -46,7 +46,7 @@
 			type="text"
 			name="beschreibung"
 			placeholder="type in here..."
-			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500 m-auto sm:w-1/4"
+			class="appearance-none shadow-sm border border-gray-200 p-2 focus:outline-1 focus:border-gray-500 m-auto "
 		/>
 
 		<div>

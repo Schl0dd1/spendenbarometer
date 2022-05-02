@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="43a43f0b-4815-4921-aeef-e6c8f579821c" name="Changes" comment="add errorPage, add hooks.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/backend/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/BuchungForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/BuchungForm.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/graph.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/graph.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/[id].svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/[id].svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes/barometer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/barometer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/index.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
